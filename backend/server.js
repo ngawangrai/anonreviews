@@ -31,6 +31,7 @@ app.use((err, req, res, next) => {
 
 app.get("/ping", (req, res) => {
   res.status(200).send("pong");
+  console.log("pong");
 });
 
 app.listen(port, "0.0.0.0", () => {
