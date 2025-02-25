@@ -64,7 +64,7 @@ function App() {
                   className="form-control"
                   value={newReview}
                   onChange={(e) => setNewReview(e.target.value)}
-                  placeholder="Write your review..."
+                  placeholder="Write your review.."
                   required
                   rows="4"
                   style={{
