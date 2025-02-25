@@ -1,0 +1,35 @@
+version: "3.8"
+services:
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:5001
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "5001:5001"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:root@db:5432/reviews
+
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: reviews
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./backend/sql:/docker-entrypoint-initdb.d
+
+volumes:
+  db_data:

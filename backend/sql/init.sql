@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS reviews (
+  id SERIAL PRIMARY KEY,
+  content TEXT NOT NULL,
+  rating INTEGER NOT NULL,
+  created_at TIMESTAMP DEFAULT NOW()
+);
